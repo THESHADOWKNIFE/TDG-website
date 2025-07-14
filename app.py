@@ -1,9 +1,16 @@
+from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template
 
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.debug = True
 
+app.config['SQLALCHEMY_DATABASE_URT'] = 'sqlite:///login.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy()
+db.init_app(app)
+app.register_blueprint(admin_r)
 
 @app.route("/")
 def homepage():
