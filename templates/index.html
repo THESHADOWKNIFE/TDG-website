@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lorenzo</title>
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css')}}" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+
+<body>
+  <div id="map"></div>
+
+  <div class="navbar">
+    <a href="#home">Home</a>
+    <a href="#about">Quizzes</a>
+    <a href="#services">Contact</a>
+    <a href="#contact">About</a>
+    <a>News</a>
+  </div>
+
+  <script>
+    // 初始化地图
+    const map = L.map('map', {
+      center: [-38, 160],
+      zoom: 4,
+      worldCopyJump: true,
+      minZoom: 2
+    });
+
+    // 限制上下方向拖动
+    const bounds = L.latLngBounds(
+      L.latLng(-85, -Infinity),
+      L.latLng(85, Infinity)
+    );
+    map.setMaxBounds(bounds);
+
+    // 添加地图图层
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const places = [
+        { 
+          name: "Beijing", 
+          coords: [39.9042, 116.4074], 
+          info: "Capital city of China",
+          img: "https://upload.wikimedia.org/wikipedia/commons/5/50/Forbidden_City_Beijing_Shenwumen_Gate.jpg"
+        },
+        { name: "London", coords: [51.5074, -0.1278], info: "Capital city of United Kingdom" },
+        { name: "Wellington", coords: [-41.2865, 174.7762], info: "Wellington is the capital city of New Zealand. It is located at the south-western tip of the North Island, between Cook Strait and the Remutaka Range. Wellington is the third-largest city in New Zealand (second largest in the North Island), and is the administrative centre of the Wellington Region. It is the world's southernmost capital of a sovereign state. Wellington features a temperate maritime climate, and is the world's windiest city by average wind speed." },
+        { name: "Moscow", coords: [55.7558, 37.6176], info: "Capital city of Russia" },
+	      { name: "Washington, D.C.", coords: [38.9072, -77.0369], info: "Capital city of the United States" },
+  		  { name: "Tokyo", coords: [35.6895, 139.6917], info: "Capital city of Japan" },
+  		  { name: "Paris", coords: [48.8566, 2.3522], info: "Capital city of France" },
+  		  { name: "Berlin", coords: [52.52, 13.4050], info: "Capital city of Germany" },
+  		  { name: "Rome", coords: [41.9028, 12.4964], info: "Capital city of Italy" },
+  		  { name: "Warsaw", coords: [52.2297, 21.0122], info: "Capital city of Poland" },
+  	  	{ name: "Canberra", coords: [-35.2809, 149.1300], info: "Capital city of Australia" },
+        { name: "Ottawa", coords: [45.4215, -75.6997], info: "Capital city of Canada" },
+        { name: "Brasília", coords: [-15.7939, -47.8828], info: "Capital city of Brazil" },
+        { name: "New Delhi", coords: [28.6139, 77.2090], info: "Capital city of India" },
+        { name: "Seoul", coords: [37.5665, 126.9780], info: "Capital city of South Korea" },
+        { name: "Ankara", coords: [39.9208, 32.8541], info: "Capital city of Turkey" },
+        { name: "Cairo", coords: [30.0444, 31.2357], info: "Capital city of Egypt" },
+        { name: "Kyiv", coords: [50.4501, 30.5234], info: "Capital city of Ukraine" },
+        { name: "Buenos Aires", coords: [-34.6037, -58.3816], info: "Capital city of Argentina" },
+        { name: "Pretoria", coords: [-25.7479, 28.2293], info: "Administrative capital of South Africa" },
+        { name: "Madrid", coords: [40.4168, -3.7038], info: "Capital city of Spain" },
+        { name: "Vienna", coords: [48.2082, 16.3738], info: "Capital city of Austria" }
+    ];
+
+    places.forEach(place => {
+      L.marker(place.coords)
+        .addTo(map)
+        .bindPopup(`
+          <div style="text-align:center; width:220px;">
+            <h3>${place.name}</h3>
+            ${place.img ? `<img src="${place.img}" style="width:100%; border-radius:6px; margin-top:6px;" />` : ''}
+            <p style="font-size:14px; margin-top:8px;">${place.info}</p>
+          </div>
+        `);
+    });
+  </script>
+</body>
+
+</html>
