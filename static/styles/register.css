@@ -1,0 +1,58 @@
+body {
+  font-family: Arial, sans-serif;
+  background-size: cover;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-box {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  color: white;
+}
+
+.register-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.register-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgba(255,255,255,0.8);
+  color: black;
+}
+
+.register-box button {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.register-box button:hover {
+  background-color: #555;
+}
+
+#message {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+  color: #ffdddd;
+}

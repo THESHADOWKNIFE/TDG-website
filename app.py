@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, render_template, Blueprint
+from flask import Flask, render_template, Blueprint, request, redirect
 
 admin_r = Blueprint('admin',__name__, url_prefix='/admin')
 
@@ -29,13 +29,40 @@ class Quiz_questions(db.Model):
     question = db.Column(db.String(255))
     answer = db.Column(db.String(10))
 
-@app.route("/")
+@app.route("/homepage")
 def homepage():
     return render_template("index.html")
 
-@app.route("/login")
+@app.route("/register", methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        entry = User(
+            email = email,
+            password = password,
+        )
+        db.session.add(entry)
+        db.session.commit()
+        return redirect("/")
+    else:
+        return render_template("register.html")
+
+@app.route("/", methods=['GET', 'POST'])
 def login():
-    return render_template("login.html")
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        match = User.query.filter_by(email=email, password=password).first()
+        if match:
+            return redirect("/homepage")
+        else:
+            message = "Invalid password or email"
+            return render_template("login.html", message=message)
+    else:
+        return render_template("login.html")
 
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
     app.run(host='127.0.0.1', port=8000)

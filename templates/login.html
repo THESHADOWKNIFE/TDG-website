@@ -8,12 +8,15 @@
 <body style="background: url('/static/background.jpg') no-repeat center center fixed;">
   <div class="login-box">
     <h2>Login</h2>
-    <form id="loginForm">
-      <input type="text" name="username" placeholder="Username" required />
+    <form id="loginForm" method="post">
+      <input type="text" name="email" placeholder="email" required />
       <input type="password" name="password" placeholder="Password" required />
       <button type="submit">Login</button>
+      <a href="/register">Go register</a>
     </form>
-    <p id="message"></p>
+    {% if message %}
+    <p id="message">{{message}}</p>
+    {% endif %}
   </div>
 </body>
 </html>
