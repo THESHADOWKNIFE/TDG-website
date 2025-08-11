@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz Results</title>
+</head>
+<body>
+  <h1>Quiz Results</h1>
+  <p>Your accuracy: {{ accuracy }}%</p>
+
+  <hr>
+
+  {% for r in results %}
+    <div {% if r.correct %} style="margin-bottom: 20px; color: 'green';" {% else %} style="margin-bottom: 20px; color: 'red';"{% endif %}>
+      <p><strong>Question:</strong> {{ r.question }}</p>
+      <p><strong>Your answer:</strong> {{ r.user_answer }}</p>
+      <p><strong>Correct answer:</strong> {{ r.correct_answer }}</p>
+    </div>
+  {% endfor %}
+
+  <hr>
+
+  <a href="{{ url_for('homepage') }}">Back to Home</a>
+</body>
+</html>

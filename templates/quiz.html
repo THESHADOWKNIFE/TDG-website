@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz</title>
+</head>
+<body>
+  <h1>Quiz</h1>
+  <form method="post" action="{{ url_for('submit') }}">
+    {% for q in questions %}
+      <div style="margin-bottom: 20px;">
+        <p><strong>Question {{ loop.index }}:</strong></p>
+        <p>{{ q.question }}</p>
+        <input type="text" name="{{ q.id }}" placeholder="Enter your answer" required />
+      </div>
+    {% endfor %}
+    <button type="submit">Submit Answers</button>
+  </form>
+  <br>
+  <a href="{{ url_for('homepage') }}">Back to Home</a>
+</body>
+</html>
