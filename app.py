@@ -29,12 +29,11 @@ class Quiz_result(db.Model):
 
 class Quiz_questions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    question = db.Column(db.String(255))  # 包含题目和选项
-    answer = db.Column(db.String(10))     # 正确答案
+    question = db.Column(db.String(255))
+    answer = db.Column(db.String(10))
 
 @app.route("/homepage")
 def homepage():
-    # 这里简单判定用户登录
     if not session.get('user_id'):
         return redirect(url_for('login'))
     return render_template("index.html")
@@ -70,21 +69,18 @@ def login():
     else:
         return render_template("login.html")
 
-# 新增：答题页面-选择难度（GET）和开始答题（POST）
 @app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
     if not session.get('user_id'):
         return redirect(url_for('login'))
 
     if request.method == 'GET':
-        # 显示难度选择页面
         return render_template('select_difficulty.html')
 
     difficulty = request.form.get('difficulty')
     if difficulty not in ['easy', 'medium', 'hard']:
         return redirect(url_for('quiz'))
 
-    # 根据难度获取题目id范围
     if difficulty == 'easy':
         ids = list(range(1, 21))
         count = 10
@@ -98,7 +94,6 @@ def quiz():
     question_ids = random.sample(ids, count)
     questions = Quiz_questions.query.filter(Quiz_questions.id.in_(question_ids)).all()
 
-    # 把题目和答案存session方便提交校验
     session['questions'] = [{
         'id': q.id,
         'question': q.question,
@@ -107,7 +102,6 @@ def quiz():
 
     return render_template('quiz.html', questions=session['questions'])
 
-# 新增：提交答题结果，显示报告并保存记录
 @app.route('/submit', methods=['POST'])
 def submit():
     if not session.get('user_id') or not session.get('questions'):
@@ -118,7 +112,6 @@ def submit():
 
     user_answers = {}
     for q in questions:
-        # 从表单中获取答案，name是题目id
         ans = request.form.get(str(q['id']), '').strip()
         user_answers[q['id']] = ans
 
@@ -136,7 +129,6 @@ def submit():
             'correct': correct
         })
 
-    # 保存结果
     quiz_result = Quiz_result(
         user_id=user_id,
         right_number=correct_count,
@@ -147,7 +139,6 @@ def submit():
 
     accuracy = round(correct_count / len(questions) * 100, 2)
 
-    # 清除session中的题目
     session.pop('questions', None)
 
     return render_template('result.html', results=results, accuracy=accuracy)

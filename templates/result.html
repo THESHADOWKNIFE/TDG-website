@@ -3,23 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <title>Quiz Results</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/quiz.css') }}">
 </head>
 <body>
-  <h1>Quiz Results</h1>
-  <p>Your accuracy: {{ accuracy }}%</p>
+  <div class="container">
+    <h1>Quiz Results</h1>
+    <p>Your accuracy: {{ accuracy }}%</p>
 
-  <hr>
+    <hr>
 
-  {% for r in results %}
-    <div {% if r.correct %} style="margin-bottom: 20px; color: 'green';" {% else %} style="margin-bottom: 20px; color: 'red';"{% endif %}>
-      <p><strong>Question:</strong> {{ r.question }}</p>
-      <p><strong>Your answer:</strong> {{ r.user_answer }}</p>
-      <p><strong>Correct answer:</strong> {{ r.correct_answer }}</p>
-    </div>
-  {% endfor %}
+    {% for r in results %}
+      <div class="question-block {% if r.correct %}result-correct{% else %}result-wrong{% endif %}">
+        <p><strong>Question:</strong> {{ r.question }}</p>
+        <p><strong>Your answer:</strong> {{ r.user_answer }}</p>
+        <p><strong>Correct answer:</strong> {{ r.correct_answer }}</p>
+      </div>
+    {% endfor %}
 
-  <hr>
+    <hr>
 
-  <a href="{{ url_for('homepage') }}">Back to Home</a>
+    <a href="{{ url_for('homepage') }}">Back to Home</a>
+  </div>
 </body>
 </html>

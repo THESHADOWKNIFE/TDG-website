@@ -18,15 +18,14 @@
   <div id="map"></div>
 
   <div class="navbar">
-    <a href="#home">Home</a>
-    <a href="#about">Quizzes</a>
+    <a href="/homepage">Home</a>
+    <a href="/quiz">Quizzes</a>
     <a href="#services">Contact</a>
     <a href="#contact">About</a>
     <a>News</a>
   </div>
 
   <script>
-    // 初始化地图
     const map = L.map('map', {
       center: [-38, 160],
       zoom: 4,
@@ -34,14 +33,12 @@
       minZoom: 2
     });
 
-    // 限制上下方向拖动
     const bounds = L.latLngBounds(
       L.latLng(-85, -Infinity),
       L.latLng(85, Infinity)
     );
     map.setMaxBounds(bounds);
 
-    // 添加地图图层
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
       attribution: '&copy; OpenStreetMap contributors'
