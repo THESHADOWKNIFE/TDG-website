@@ -38,6 +38,10 @@ def homepage():
         return redirect(url_for('login'))
     return render_template("index.html")
 
+@app.route("/about")
+def about_us():
+    return render_template("about.html")
+
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -142,6 +146,16 @@ def submit():
     session.pop('questions', None)
 
     return render_template('result.html', results=results, accuracy=accuracy)
+
+@app.route('/records')
+def records():
+    if not session.get('user_id'):
+        return redirect(url_for('login'))
+
+    user_id = session['user_id']
+    results = Quiz_result.query.filter_by(user_id=user_id).all()
+
+    return render_template('records.html', results=results)
 
 if __name__ == '__main__':
     with app.app_context():

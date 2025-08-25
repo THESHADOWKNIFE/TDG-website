@@ -30,6 +30,17 @@ body {
   background-color: #575757;
 }
 
+.title{
+  font-family: Segoe Script;
+  font-size: 45px;
+  z-index: 99999;
+  color: black;
+  position: fixed;
+  left: 82vw;
+  top: 3vh;
+}
+
+
 #map {
   position: fixed;
   top: 0;
