@@ -48,20 +48,60 @@
     }).addTo(map);
 
     const places = [
-        { 
-          name: "Beijing", 
+        { name: "Beijing", 
           coords: [39.9042, 116.4074], 
-          info: "Capital city of China",
-          img: "https://upload.wikimedia.org/wikipedia/commons/5/50/Forbidden_City_Beijing_Shenwumen_Gate.jpg"
+          info: "Beijing, previously romanized as Peking, is the capital city of China. With more than 22 million residents, it is the world's most populous national capital city as well as China's second largest city by urban area after Shanghai. It is located in Northern China, and is governed as a municipality under the direct administration of the State Council with 16 urban, suburban, and rural districts.",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Skyline_of_Beijing_CBD_from_the_southeast_%2820210907094201%29.jpg/1920px-Skyline_of_Beijing_CBD_from_the_southeast_%2820210907094201%29.jpg"
         },
-        { name: "London", coords: [51.5074, -0.1278], info: "Capital city of United Kingdom" },
-        { name: "Wellington", coords: [-41.2865, 174.7762], info: "Wellington is the capital city of New Zealand. It is located at the south-western tip of the North Island, between Cook Strait and the Remutaka Range. Wellington is the third-largest city in New Zealand (second largest in the North Island), and is the administrative centre of the Wellington Region. It is the world's southernmost capital of a sovereign state. Wellington features a temperate maritime climate, and is the world's windiest city by average wind speed." },
-        { name: "Moscow", coords: [55.7558, 37.6176], info: "Capital city of Russia" },
-	      { name: "Washington, D.C.", coords: [38.9072, -77.0369], info: "Capital city of the United States" },
-  		  { name: "Tokyo", coords: [35.6895, 139.6917], info: "Capital city of Japan" },
-  		  { name: "Paris", coords: [48.8566, 2.3522], info: "Capital city of France" },
-  		  { name: "Berlin", coords: [52.52, 13.4050], info: "Capital city of Germany" },
-  		  { name: "Rome", coords: [41.9028, 12.4964], info: "Capital city of Italy" },
+
+        { name: "London", 
+          coords: [51.5074, -0.1278], 
+          info: "London is the capital and largest city of both England and the United Kingdom, with a population of 9,841,000 in 2025. Its wider metropolitan area is the largest in Western Europe, with a population of 15.1 million. London stands on the River Thames in southeast England, at the head of a 50-mile (80 km) tidal estuary down to the North Sea, and has been a major settlement for nearly 2,000 years.",
+          img: "https://upload.wikimedia.org/wikipedia/commons/6/67/London_Skyline_%28125508655%29.jpeg"
+        },
+
+        { name: "Wellington", 
+          coords: [-41.2865, 174.7762], 
+          info: "Wellington is the capital city of New Zealand. It is located at the south-western tip of the North Island, between Cook Strait and the Remutaka Range. Wellington is the third-largest city in New Zealand (second largest in the North Island), and is the administrative centre of the Wellington Region. It is the world's southernmost capital of a sovereign state. Wellington features a temperate maritime climate, and is the world's windiest city by average wind speed." ,
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Wellington_Panorama_View.jpg/2560px-Wellington_Panorama_View.jpg"
+        },
+
+        { name: "Moscow", 
+          coords: [55.7558, 37.6176], 
+          info: "Moscow is the capital and largest city of Russia, standing on the Moskva River in Central Russia. It has a population estimated at over 13 million residents within the city limits. Moscow is among the world's largest cities, being the most populous city entirely in Europe, the largest urban and metropolitan area in Europe, and the largest city by land area on the European continent.",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Moscow_%2852078730783%29.jpg/1920px-Moscow_%2852078730783%29.jpg"
+        },
+
+	      { name: "Washington, D.C.", 
+          coords: [38.9072, -77.0369], 
+          info: "Washington, D.C., officially the District of Columbia and commonly known as simply Washington or D.C., is the capital city and federal district of the United States. The city is on the Potomac River, across from Virginia, and shares land borders with Maryland to its north and east. It was named after George Washington, the first president of the United States. The district is named for Columbia, the female personification of the nation.",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/12-07-13-washington-by-RalfR-08.jpg/800px-12-07-13-washington-by-RalfR-08.jpg"
+        },
+
+  		  { name: "Tokyo", 
+          coords: [35.6895, 139.6917], 
+          info: "Tokyo, officially the Tokyo Metropolis, is the capital and most populous city in Japan. With a population of over 14 million in the city proper in 2023, it is one of the most populous urban areas in the world. The Greater Tokyo Area, which includes Tokyo and parts of six neighboring prefectures, is the most populous metropolitan area in the world, with 41 million residents as of 2024.",
+          img: "https://upload.wikimedia.org/wikipedia/commons/b/b2/Skyscrapers_of_Shinjuku_2009_January.jpg"
+        },
+
+  		  { name: "Paris",
+          coords: [48.8566, 2.3522], 
+          info: "Paris is the capital and largest city of France, with an estimated population of 2,048,472 in January 2025 in an area of more than 105 km2 (41 sq mi). It is located in the centre of the Île-de-France region. Paris is the fourth-most populous city in the European Union. Nicknamed the City of Light, Paris has been one of the world's major centres of finance, diplomacy, commerce, culture, fashion, and gastronomy since the 17th century.",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/1920px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg"
+        },
+
+  		  { name: "Berlin", 
+          coords: [52.52, 13.4050], 
+          info: "Berlin is the capital and largest city of Germany, by both area and population. With 3.7 million inhabitants, it has the highest population within its city limits of any city in the European Union. The urban area of Berlin has a population of over 4.6 million, making it the most populous in Germany. The Berlin-Brandenburg capital region has around 6.2 million inhabitants and is Germany's second-largest metropolitan region after the Rhine-Ruhr region, as well as the fifth-biggest metropolitan region by GDP in the European Union.",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Museumsinsel_Berlin_Juli_2021_1_%28cropped%29_b.jpg/2560px-Museumsinsel_Berlin_Juli_2021_1_%28cropped%29_b.jpg"
+        },
+
+  		  { name: "Rome", 
+          coords: [41.9028, 12.4964], 
+          info: "Rome is the capital city and most populated comune (municipality) of Italy. It is also the administrative centre of the Lazio region and of the Metropolitan City of Rome. A special comune named Roma Capitale with 2,746,984 residents in 1,287.36 km2 (497.1 sq mi), Rome is the third most populous city in the European Union by population within city limits. The Metropolitan City of Rome Capital, with a population of 4,223,885 residents, is the most populous metropolitan city in Italy. Its metropolitan area is the third-most populous within Italy.",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Rome_skyline_panorama.jpg/2560px-Rome_skyline_panorama.jpg"
+        },
+        
   		  { name: "Warsaw", coords: [52.2297, 21.0122], info: "Capital city of Poland" },
   	  	{ name: "Canberra", coords: [-35.2809, 149.1300], info: "Capital city of Australia" },
         { name: "Ottawa", coords: [45.4215, -75.6997], info: "Capital city of Canada" },

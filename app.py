@@ -42,6 +42,10 @@ def homepage():
 def about_us():
     return render_template("about.html")
 
+@app.route("/news")
+def news():
+    return render_template("news.html")
+
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
