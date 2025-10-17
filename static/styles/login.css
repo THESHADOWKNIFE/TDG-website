@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
   background-size: cover;
   margin: 0;
   height: 100vh;
@@ -9,7 +9,7 @@ body {
 }
 
 .title{
-  font-family: Segoe Script;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
   font-size: 45px;
   z-index: 99999;
   color: black;

@@ -5,20 +5,22 @@
     <title>Your Quiz Records</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f9f9f9;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: url('https://portstjoeresort.com/wp-content/uploads/2024/02/Port-St.-Joe-Beach-fishing.jpg') no-repeat center center fixed;
+            background-size: cover;
             padding: 30px;
         }
         h1 {
             text-align: center;
-            color: #333;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
         table {
             width: 80%;
             margin: 0 auto;
             border-collapse: collapse;
-            background: white;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.65);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
         th, td {
             padding: 12px;
@@ -26,21 +28,43 @@
             text-align: center;
         }
         th {
-            background: #000000;
+            background: rgba(0,0,0,0.8);
             color: white;
         }
         tr:nth-child(even) {
-            background: #f2f2f2;
+            background: rgba(242, 242, 242, 0.6);
         }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        tr.data-row {
+            opacity: 0;
+            animation: fadeUp 0.6s ease-out forwards;
+        }
+
         a {
             display: block;
             margin: 20px auto;
             text-align: center;
-            color: #000000;
+            color: white;
+            background: rgba(0,0,0,0.8);
+            padding: 10px 20px;
+            width: 150px;
+            border-radius: 8px;
             text-decoration: none;
+            transition: 0.3s;
         }
         a:hover {
-            text-decoration: underline;
+            background: rgba(0,0,0,1);
         }
     </style>
 </head>
@@ -54,7 +78,7 @@
             <th>Accuracy</th>
         </tr>
         {% for r in results %}
-        <tr>
+        <tr class="data-row" style="animation-delay: '{{ loop.index0 * 0.1 }}s';">
             <td>{{ r.id }}</td>
             <td>{{ r.right_number }}</td>
             <td>{{ r.quiz_number }}</td>
